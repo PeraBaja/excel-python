@@ -6,7 +6,7 @@ class Intervalo:
     def __str__(self):
         return f'{self.__limiteInferior}-{self.__limiteSuperior}'
     @property
-    def limeteInferior(self):
+    def limiteInferior(self):
       return self.__limiteInferior
     
     @property
