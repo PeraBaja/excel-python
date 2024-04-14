@@ -38,6 +38,15 @@ class Agrupaciones:
                 round(frecuencia / len(self.__datos), 2)
                 )
         return tuple(frecuenciasRelativas)
+        
+    def media(self):
+        resultado = [intervalo.marcaClase * Fi for intervalo, Fi in zip(self.__agrupaciones, self.frecuenciasAbsolutas)]
+        return sum(resultado) / len(self.__agrupaciones)
+
+    def mediana():
+        pass
+    def moda():
+        pass
     
     def __str__(self) -> str:
         intervalos = ''
