@@ -5,8 +5,8 @@ class Agrupaciones:
         self.__datos = datos
         self.__redondearAbajo = redondearAbajo
         self.__cantidadDeAgrupaciones = cantidadDeAgrupaciones
-        anchoClase = self.__calcularAnchoClase(min(datos), max(datos))
-        self.__agrupaciones = self.__agrupar(datos)
+        self.__anchoClase = self.anchoClase
+        self.__agrupaciones = self.__agrupar(datos, self.__anchoClase)
     
     
     def __agrupar(datos: list, anchoClase: float) -> tuple:
@@ -14,15 +14,26 @@ class Agrupaciones:
         for i in np.arange(min(datos), max(datos), anchoClase):
             intervalos.append(Intervalo(i, i + anchoClase))
         return tuple(intervalos)
-
-    def __calcularAnchoClase (self, valorMinimo, valorMaximo):
-        ancho_clase: float = (valorMaximo - valorMinimo) / self.__cantidadDeAgrupaciones
+    
+    @property
+    def anchoClase (self):
+        ancho_clase: float = (max(self.__datos) - min(self.__datos)) / self.__cantidadDeAgrupaciones
         return ancho_clase.__floor__()  if self.__redondearAbajo else ancho_clase.__ceil__()
 
+    @property
     def frecuenciasAbsolutas(self) :
+        frecuenciasAbsolutas = []
         for intervalo in self.__agrupaciones:
-            frecuenciaAbsoluta = sum(1 for dato in self.__datos if intervalo.limiteInferior <= dato < intervalo.limiteSuperior)
-            return frecuenciaAbsoluta
+            frecuenciasAbsolutas.append(
+                sum(1 for dato in self.__datos if intervalo.limiteInferior <= dato < intervalo.limiteSuperior)
+                )
+        return tuple(frecuenciasAbsolutas)    
 
-    def frecuenciaRelativa(self):
-        return round(self.frecuenciaAbsoluta() / len(self.__datos), 2)
+    @property
+    def frecuenciasRelativas(self):
+        frecuenciasRelativas = []
+        for frecuencia in self.frecuenciasAbsolutas:
+            frecuenciasRelativas.append(
+                round(frecuencia / len(self.__datos), 2)
+                )
+        return tuple(frecuenciasRelativas)
