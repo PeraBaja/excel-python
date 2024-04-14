@@ -1,4 +1,4 @@
-from agrupacion import  agrupar, calcularAnchoClase 
+from agrupacion import Agrupaciones
 from datos_no_agrupados import media, mediana, moda 
 from Intervalo import Intervalo
 kmRecorridosCon1LDeNafta = [
@@ -12,18 +12,6 @@ kmRecorridosCon1LDeNafta = [
   7.8, 12.75, 10.25, 12.75, 7.8,
   8.75, 11.75, 11.5, 11.5, 9.4, 8
 ]
-anchoClase = calcularAnchoClase(min(kmRecorridosCon1LDeNafta),
-  max(kmRecorridosCon1LDeNafta),
-  7,
-  False)
-
-intervalos: tuple = agrupar(kmRecorridosCon1LDeNafta, anchoClase)
-print(len(kmRecorridosCon1LDeNafta))
-print(f'Media: {media(kmRecorridosCon1LDeNafta)}, Mediana: {mediana(kmRecorridosCon1LDeNafta)}, Moda: {moda()}')
-for intervalo in intervalos:
-    intervalo: Intervalo
-    try:
-        print(f'{intervalo}: Fi {intervalo.frecuenciaAbsoluta()}')
-        print(f'{intervalo}: fi {(intervalo.frecuenciaRelativa() * 100)}%')
-    except AttributeError:
-        print(f'El elemento "{intervalo}" no es un intervalo valido')
+agrupaciones = Agrupaciones(kmRecorridosCon1LDeNafta, 7, False)
+print(agrupaciones, agrupaciones.anchoClase, agrupaciones.frecuenciasAbsolutas, agrupaciones.frecuenciasRelativas)
+print(f'Media: {media(kmRecorridosCon1LDeNafta)}, Mediana: {mediana(kmRecorridosCon1LDeNafta)}, Moda: {moda(kmRecorridosCon1LDeNafta)}')
