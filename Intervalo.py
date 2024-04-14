@@ -1,7 +1,7 @@
 class Intervalo:
-    def __init__(self, limiteInferior, LimiteSuperior, datos) :
+    def __init__(self, limiteInferior, limiteSuperior, datos) :
         self.__limiteInferior = limiteInferior
-        self.__limiteSuperior = LimiteSuperior
+        self.__limiteSuperior = limiteSuperior
         self.__datos = datos
 
     def frecuenciaAbsoluta(self) :
@@ -12,9 +12,9 @@ class Intervalo:
         return round(self.frecuenciaAbsoluta() / len(self.__datos), 2)
 
     def __str__(self):
-        return f'{self.__limiteInferior}-{self.__LimiteSuperior}'
+        return f'{self.__limiteInferior}-{self.__limiteSuperior}'
     @property
-    def _limeteInferior(self):
+    def limeteInferior(self):
       return self.__limiteInferior
     
     @property
