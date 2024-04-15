@@ -2,13 +2,12 @@ import numpy as np
 from Intervalo import Intervalo 
 class Agrupaciones:
     def __init__(self, datos, cantidadDeAgrupaciones, redondearAbajo) -> None:
-        self.__datos = datos
+        self.__datos: tuple = datos
         self.__redondearAbajo = redondearAbajo
         self.__cantidadDeAgrupaciones = cantidadDeAgrupaciones
         self.__anchoClase = self.anchoClase
         self.__agrupaciones = self.__agrupar()
-    
-    
+        
     def __agrupar(self) -> tuple:
         intervalos = []
         for i in np.arange(min(self.__datos), max(self.__datos), self.__anchoClase):
