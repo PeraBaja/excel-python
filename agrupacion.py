@@ -38,7 +38,15 @@ class Agrupaciones:
                 round(frecuencia / len(self.__datos), 2)
                 )
         return tuple(frecuenciasRelativas)
-        
+    @property
+    def frecuenciasAcumuladas(self):
+        frecuenciaAcumulada = 0
+        frecuenciasAcumuladas = []
+        for frecuenciaAbsoluta in self.frecuenciasAbsolutas:
+            frecuenciaAcumulada += frecuenciaAbsoluta
+            frecuenciasAcumuladas.append(frecuenciaAcumulada)
+        return tuple(frecuenciasAcumuladas)
+            
     def media(self):
         resultado = [intervalo.marcaClase * Fi for intervalo, Fi in zip(self.__agrupaciones, self.frecuenciasAbsolutas)]
         return round(sum(resultado) / len(self.__datos), 2)
