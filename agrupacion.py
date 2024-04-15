@@ -1,6 +1,6 @@
 import numpy as np
 from Intervalo import Intervalo
-from datos_no_agrupados import moda 
+
 class Agrupaciones:
     def __init__(self, datos, cantidadDeAgrupaciones, redondearAbajo) -> None:
         self.__datos: tuple = datos
@@ -58,7 +58,10 @@ class Agrupaciones:
         Li = 0
         for i in range(len(self.frecuenciasAcumuladas)):
             if self.frecuenciasAcumuladas[i] > Me:
-                FiAnterior = self.frecuenciasAcumuladas[i - 1]
+                try:
+                    FiAnterior = self.frecuenciasAcumuladas[i - 1]
+                except IndexError:
+                    FiAnterior = 0
                 fi = self.frecuenciasAbsolutas[i]
                 Li = self.__agrupaciones[i].limiteInferior
                 break
@@ -75,8 +78,14 @@ class Agrupaciones:
                 Mo = self.frecuenciasAbsolutas[i]
                 fi = self.frecuenciasAbsolutas[i]
                 Li = self.__agrupaciones[i].limiteInferior
-                fiAnterior = self.frecuenciasAbsolutas[i - 1]
-                fiPosterior = self.frecuenciasAbsolutas[i + 1]
+                try:
+                    fiAnterior = self.frecuenciasAbsolutas[i - 1]
+                except IndexError:
+                    fiAnterior = 0
+                try:
+                    fiPosterior = self.frecuenciasAbsolutas[i + 1]
+                except IndexError:
+                    fiPosterior = 0
         return round(Li + ((Mo - fiAnterior) / (fi - fiAnterior + fi - fiPosterior))* self.anchoClase, 2)
     
     def __str__(self) -> str:
