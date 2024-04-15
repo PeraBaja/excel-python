@@ -41,7 +41,7 @@ class Agrupaciones:
         
     def media(self):
         resultado = [intervalo.marcaClase * Fi for intervalo, Fi in zip(self.__agrupaciones, self.frecuenciasAbsolutas)]
-        return sum(resultado) / len(self.__agrupaciones)
+        return round(sum(resultado) / len(self.__datos), 2)
 
     def mediana():
         pass
