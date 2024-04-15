@@ -49,7 +49,7 @@ class Agrupaciones:
         pass
     
     def __str__(self) -> str:
-        intervalos = ''
-        for intervalo in self.__agrupaciones:
-            intervalos += f'{intervalo}, '
+        intervalos = 'Intervalos: fi | Fi \n'
+        for i in range(len(self.__agrupaciones)):
+            intervalos += f'{self.__agrupaciones[i]}: {self.frecuenciasAbsolutas[i]} | {self.frecuenciasAcumuladas[i]} \n'
         return intervalos
