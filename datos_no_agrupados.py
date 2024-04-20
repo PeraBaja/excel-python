@@ -2,7 +2,8 @@ def media(datos: list):
     return round(sum(datos) / len(datos), 2)
 
 
-def mediana(datos):
+def mediana(datos: list):
+    datos.sort()
     posicionMedio = (len(datos) + 1) / 2
     if posicionMedio.is_integer():
         return datos[int(posicionMedio)]
