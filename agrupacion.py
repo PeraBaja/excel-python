@@ -11,6 +11,7 @@ class Agrupaciones:
         self.__frecuenciasAbsolutas = self.__calcular_frecuenciasAbsolutas()
         self.__frecuenciasRelativas = self.__calcular_frecuenciasRelativas()
         self.__frecuenciasAcumuladas = self.__calcular_frecuenciasAcumuladas()
+        self.__indice = 0
     frecuenciasAbsolutas = property(lambda self: self.__frecuenciasAbsolutas)
     anchoClase = property(lambda self: self.__anchoClase)
     frecuenciasRelativas = property(lambda self: self.__frecuenciasRelativas)
@@ -92,6 +93,17 @@ class Agrupaciones:
                     fiPosterior = 0
         return round(Li + ((Mo - fiAnterior) / (fi - fiAnterior + fi - fiPosterior))* self.anchoClase, 2)
     
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.__indice < len(self.__agrupaciones):
+            intervalo = self.__agrupaciones[self.__indice]
+            self.__indice += 1
+            return intervalo
+        else:
+            self.__indice = 0 
+            raise StopIteration
     def __str__(self) -> str:
         intervalos = 'Intervalos: fi | Fi \n'
         for i in range(len(self.__agrupaciones)):
