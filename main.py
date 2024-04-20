@@ -1,6 +1,6 @@
 from agrupacion import Agrupaciones
 from datos_no_agrupados import calcular_percentil, media, mediana, moda, calcular_cuartiles
-from Intervalo import Intervalo
+from Frecuencias import Frecuencias
 
 kmRecorridosCon1LDeNafta = [
   12.5, 11.3, 13.25, 9.5, 10.5,
@@ -14,6 +14,8 @@ kmRecorridosCon1LDeNafta = [
   8.75, 11.75, 11.5, 11.5, 9.4
 ]
 agrupaciones = Agrupaciones(kmRecorridosCon1LDeNafta, 7, False)
+frecuencias = Frecuencias(agrupaciones, kmRecorridosCon1LDeNafta)
+print(frecuencias.frecuenciasAbsolutas, frecuencias.frecuenciasAcumuladas)
 print(agrupaciones)
 print(f'Media: {agrupaciones.media()}, Mediana: {agrupaciones.mediana()}, Moda: {agrupaciones.moda()}')
 print(f'Media: {media(kmRecorridosCon1LDeNafta)}, Mediana: {mediana(kmRecorridosCon1LDeNafta)}, Moda: {moda(kmRecorridosCon1LDeNafta)}')
