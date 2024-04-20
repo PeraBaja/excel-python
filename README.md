@@ -14,7 +14,7 @@ Mira **Deployment** para conocer como desplegar el proyecto.
 _clona el proyecto_
 
 ```
--git clone https://github.com/PeraBaja/excel-python.git
+git clone https://github.com/PeraBaja/excel-python.git
 ```
 _instala numpy_
 
