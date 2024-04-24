@@ -72,7 +72,7 @@ class Agrupacion:
             self.__indice = 0 
             raise StopIteration
     def __str__(self) -> str:
-        intervalos = 'Intervalos: fi | Fi \n'
+        intervalos = 'Intervalos:\n'
         for i in range(len(self.__intervalos)):
-            intervalos += f'{self.__intervalos[i]}: {self.frecuenciasAbsolutas[i]} | {self.frecuenciasAcumuladas[i]} \n'
+            intervalos += f'{self.__intervalos[i]}:\n'
         return intervalos
