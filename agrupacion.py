@@ -10,7 +10,7 @@ class Agrupacion:
         self.__intervalos = self.__agrupar() 
         self.__indice = 0
     anchoClase = property(lambda self: self.__anchoClase)     
-
+    intervalos = property(lambda self: self.__intervalos)
     def __agrupar(self) -> tuple:
         intervalos = []
         for i in np.arange(min(self.__datos), max(self.__datos), self.__anchoClase):
