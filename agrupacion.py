@@ -1,13 +1,13 @@
 import numpy as np
 from Intervalo import Intervalo
 
-class Agrupaciones:
-    def __init__(self, datos, cantidadDeAgrupaciones, redondearAbajo) -> None:
+class Intervalos:
+    def __init__(self, datos, cantidadDeIntervalos, redondearAbajo) -> None:
         self.__datos: tuple = datos
         self.__redondearAbajo = redondearAbajo
-        self.__cantidadDeAgrupaciones = cantidadDeAgrupaciones
+        self.__cantidadDeIntervalos = cantidadDeIntervalos
         self.__anchoClase = self.__calcular_anchoClase()
-        self.__agrupaciones = self.__agrupar() 
+        self.__intervalos = self.__agrupar() 
         self.__frecuenciasAbsolutas = self.__calcular_frecuenciasAbsolutas()
         self.__frecuenciasRelativas = self.__calcular_frecuenciasRelativas()
         self.__frecuenciasAcumuladas = self.__calcular_frecuenciasAcumuladas()
@@ -24,12 +24,12 @@ class Agrupaciones:
         return tuple(intervalos)
     
     def __calcular_anchoClase (self):
-        ancho_clase: float = (max(self.__datos) - min(self.__datos)) / self.__cantidadDeAgrupaciones
+        ancho_clase: float = (max(self.__datos) - min(self.__datos)) / self.__cantidadDeIntervalos
         return ancho_clase.__floor__()  if self.__redondearAbajo else ancho_clase.__ceil__()
     
     def __calcular_frecuenciasAbsolutas(self) :
         frecuenciasAbsolutas = []
-        for intervalo in self.__agrupaciones:
+        for intervalo in self.__intervalos:
             intervalo: Intervalo
             frecuenciasAbsolutas.append(
                 sum(1 for dato in self.__datos if intervalo.limiteInferior <= dato < intervalo.limiteSuperior)
