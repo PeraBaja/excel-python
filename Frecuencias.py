@@ -9,37 +9,37 @@ class Frecuencias:
             print('Error. Debe pasarse como argumento un objeto de tipo agrupación')
             raise TypeError
         self.__datos = datos
-        self.__frecuenciasAbsolutas = self.__calcular_frecuenciasAbsolutas()
-        self.__frecuenciasRelativas = self.__calcular_frecuenciasRelativas()
-        self.__frecuenciasAcumuladas = self.__calcular_frecuenciasAcumuladas()
+        self.__absolutas = self.__calcular_absolutas()
+        self.__relativas = self.__calcular_relativas()
+        self.__acumuladas = self.__calcular_acumuladas()
     
-    frecuenciasAbsolutas = property(lambda self: self.__frecuenciasAbsolutas)
-    frecuenciasRelativas = property(lambda self: self.__frecuenciasRelativas)
-    frecuenciasAcumuladas = property(lambda self: self.__frecuenciasAcumuladas)
+    absolutas = property(lambda self: self.__absolutas)
+    relativas = property(lambda self: self.__relativas)
+    acumuladas = property(lambda self: self.__acumuladas)
         
 
-    def __calcular_frecuenciasAbsolutas(self) :
-        frecuenciasAbsolutas = []
+    def __calcular_absolutas(self) :
+        absolutas = []
         for intervalo in self.__agrupaciones:
             intervalo: Intervalo
-            frecuenciasAbsolutas.append(
+            absolutas.append(
                 sum(1 for dato in self.__datos if intervalo.limiteInferior <= dato < intervalo.limiteSuperior)
                 )
-        return tuple(frecuenciasAbsolutas)      
+        return tuple(absolutas)      
 
-    def __calcular_frecuenciasRelativas(self):
-        frecuenciasRelativas = []
-        for frecuencia in self.frecuenciasAbsolutas: 
-            frecuenciasRelativas.append(
+    def __calcular_relativas(self):
+        relativas = []
+        for frecuencia in self.absolutas: 
+            relativas.append(
                 round(frecuencia / len(self.__datos), 2)
                 )
-        return tuple(frecuenciasRelativas)
+        return tuple(relativas)
 
-    def __calcular_frecuenciasAcumuladas(self):
+    def __calcular_acumuladas(self):
         frecuenciaAcumulada = 0
-        frecuenciasAcumuladas = []
-        for frecuenciaAbsoluta in self.frecuenciasAbsolutas:
-            frecuenciaAcumulada += frecuenciaAbsoluta
-            frecuenciasAcumuladas.append(frecuenciaAcumulada)
-        return tuple(frecuenciasAcumuladas)
+        acumuladas = []
+        for frecuencia in self.absolutas:
+            frecuenciaAcumulada += frecuencia
+            acumuladas.append(frecuenciaAcumulada)
+        return tuple(acumuladas)
         

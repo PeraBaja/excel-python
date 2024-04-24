@@ -15,7 +15,7 @@ kmRecorridosCon1LDeNafta = [
 ]
 agrupacion = Agrupacion(kmRecorridosCon1LDeNafta, 7, False)
 frecuencias = Frecuencias(agrupacion, kmRecorridosCon1LDeNafta)
-print(frecuencias.frecuenciasAbsolutas, frecuencias.frecuenciasAcumuladas)
+print(frecuencias.absolutas, frecuencias.acumuladas)
 print(agrupacion)
 print(f'Media: {agrupacion.media()}, Mediana: {agrupacion.mediana()}, Moda: {agrupacion.moda()}')
 print(f'Media: {media(kmRecorridosCon1LDeNafta)}, Mediana: {mediana(kmRecorridosCon1LDeNafta)}, Moda: {moda(kmRecorridosCon1LDeNafta)}')
