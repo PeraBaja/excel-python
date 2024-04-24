@@ -21,6 +21,7 @@ class IMedible(ABC):
         for i in range(25, 100, 25):
             percentil = self.calcular_percentil(i)
             cuartiles.update(percentil)
+        return cuartiles
     
     @abstractmethod
     def varianza():
