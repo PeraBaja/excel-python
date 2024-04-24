@@ -1,5 +1,5 @@
-from abc import abstractmethod, ABCMeta
-class IMedible(ABCMeta):
+from abc import abstractmethod, ABC
+class IMedible(ABC):
     @abstractmethod
     def media():
         pass
@@ -16,9 +16,11 @@ class IMedible(ABCMeta):
     def calcular_percentil():
         pass
     
-    @abstractmethod
-    def calcular_cuartiles():
-        pass
+    def calcular_cuartiles(self):
+        cuartiles = {}
+        for i in range(25, 100, 25):
+            percentil = self.calcular_percentil(i)
+            cuartiles.update(percentil)
     
     @abstractmethod
     def varianza():
