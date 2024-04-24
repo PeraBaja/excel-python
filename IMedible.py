@@ -1,5 +1,5 @@
-from abc import abstractmethod
-class IMedible:
+from abc import abstractmethod, ABCMeta
+class IMedible(ABCMeta):
     @abstractmethod
     def media():
         pass
@@ -18,4 +18,8 @@ class IMedible:
     
     @abstractmethod
     def calcular_cuartiles():
+        pass
+    
+    @abstractmethod
+    def varianza():
         pass

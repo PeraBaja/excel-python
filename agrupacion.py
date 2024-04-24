@@ -1,7 +1,7 @@
 import numpy as np
 from Intervalo import Intervalo
 
-class Intervalos:
+class Agrupacion:
     def __init__(self, datos, cantidadDeIntervalos, redondearAbajo) -> None:
         self.__datos: tuple = datos
         self.__redondearAbajo = redondearAbajo

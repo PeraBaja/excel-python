@@ -1,10 +1,10 @@
 from enum import Enum, auto
-from agrupacion import Agrupaciones
+from Agrupacion import Agrupacion
 from Intervalo import Intervalo
 class Frecuencias:
-    def __init__(self, agrupaciones: Agrupaciones, datos: list):
-        if type(agrupaciones) == Agrupaciones:
-            self.__agrupaciones: Agrupaciones = agrupaciones
+    def __init__(self, agrupaciones: Agrupacion, datos: list):
+        if type(agrupaciones) == Agrupacion:
+            self.__agrupaciones: Agrupacion = agrupaciones
         else:
             print('Error. Debe pasarse como argumento un objeto de tipo agrupación')
             raise TypeError
