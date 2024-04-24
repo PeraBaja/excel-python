@@ -1,6 +1,6 @@
 from Agrupacion import Agrupacion
 from MedicionesAgrupacion import MedicionesAgrupacion
-from datos_no_agrupados import calcular_percentil, media, mediana, moda, calcular_cuartiles
+from Muestra import Muestra
 from Frecuencias import Frecuencias
 
 kmRecorridosCon1LDeNafta = [
@@ -17,12 +17,8 @@ kmRecorridosCon1LDeNafta = [
 agrupacion = Agrupacion(kmRecorridosCon1LDeNafta, 7, False)
 frecuencias = Frecuencias(agrupacion, kmRecorridosCon1LDeNafta)
 mediciones = MedicionesAgrupacion(agrupacion, frecuencias, kmRecorridosCon1LDeNafta)
-print(mediciones.media())
-print(frecuencias.absolutas, frecuencias.acumuladas)
-print(agrupacion)
-print(f'Media: {mediciones.media()}, Mediana: {mediciones.mediana()}, Moda: {mediciones.moda()}')
-print(f'Media: {media(kmRecorridosCon1LDeNafta)}, Mediana: {mediana(kmRecorridosCon1LDeNafta)}, Moda: {moda(kmRecorridosCon1LDeNafta)}')
-print(f'Cuartiles: {calcular_cuartiles(kmRecorridosCon1LDeNafta)}')
-print(f'Percentil: {calcular_percentil(kmRecorridosCon1LDeNafta, 13)}')
-
-print(sorted(kmRecorridosCon1LDeNafta))
+muestra = Muestra(kmRecorridosCon1LDeNafta)
+for datos in (muestra, mediciones):
+    print(f'Media: {datos.media()}, Mediana: {datos.mediana()}, Moda: {datos.moda()}')
+    print(f'Cuartiles: {datos.calcular_cuartiles()}')
+    print(f'Percentil: {datos.calcular_percentil(13)}')
