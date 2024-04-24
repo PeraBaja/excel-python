@@ -9,6 +9,8 @@ class Agrupacion:
         self.__anchoClase = self.__calcular_anchoClase()
         self.__intervalos = self.__agrupar() 
         self.__indice = 0
+    anchoClase = property(lambda self: self.__anchoClase)     
+
     def __agrupar(self) -> tuple:
         intervalos = []
         for i in np.arange(min(self.__datos), max(self.__datos), self.__anchoClase):
@@ -22,7 +24,6 @@ class Agrupacion:
     
     def __iter__(self):
         return self
-
     def __next__(self):
         if self.__indice < len(self.__intervalos):
             intervalo = self.__intervalos[self.__indice]
