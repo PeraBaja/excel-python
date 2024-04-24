@@ -19,7 +19,7 @@ class Muestra(IMedible):
 
     def moda(self):
         aparicionMasGrande = 0
-        cantidadApariciones = self.__listar_apariciones(self.__datos)
+        cantidadApariciones = self.__listar_apariciones()
         for dato in cantidadApariciones:
             if cantidadApariciones[dato] > aparicionMasGrande:
                 aparicionMasGrande = cantidadApariciones[dato]
@@ -50,3 +50,6 @@ class Muestra(IMedible):
             posicionPercentil = posicionPercentil.__ceil__()
             percentil = self.__datos[posicionPercentil - 1]
         return {posicionPercentil: percentil}
+    def varianza(self):
+        pass
+        
