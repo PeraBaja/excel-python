@@ -66,7 +66,7 @@ class MedicionesAgrupacion(IMedible):
             percentilDeseado (_float_): _El porcentaje del percentil_
 
         Returns:
-            _dict_: _Retorna la posicion del percentil como clave y como valor el percentil_
+            _dict_: _Retorna el percentil porcentual como clave y como valor el percentil_
         """
         Me = sum(self.__frecuencias.absolutas) * (percentilDeseado / 100)
         FiAnterior = 0
