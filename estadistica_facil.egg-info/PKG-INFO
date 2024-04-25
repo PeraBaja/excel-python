@@ -1,3 +1,15 @@
+Metadata-Version: 2.1
+Name: estadistica-facil
+Version: 1.0.0
+Summary: Una libreria para hacer mediciones estadísticas básicas de datos
+Home-page: https://github.com/PeraBaja/excel-python
+Author: Benjamín Peralta
+Author-email: benjaminp158@gmail.com
+License: MIT
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+
 # Excel en Python
 
 _Una libreria para hacer mediciones estadísticas basicas de datos_
@@ -5,7 +17,7 @@ _Una libreria para hacer mediciones estadísticas basicas de datos_
 ## Instalación
 _Instalar el proyecto_
 ```
-pip install estadistica-facil
+pip install excel-python
 ```
 
 ## Comenzando 🚀

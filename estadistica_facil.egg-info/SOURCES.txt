@@ -1,0 +1,16 @@
+LICENSE
+README.md
+setup.py
+estadistica_facil.egg-info/PKG-INFO
+estadistica_facil.egg-info/SOURCES.txt
+estadistica_facil.egg-info/dependency_links.txt
+estadistica_facil.egg-info/requires.txt
+estadistica_facil.egg-info/top_level.txt
+excel_python/Agrupacion.py
+excel_python/Frecuencias.py
+excel_python/IMedible.py
+excel_python/Intervalo.py
+excel_python/MedicionesAgrupacion.py
+excel_python/Muestra.py
+excel_python/__init__.py
+excel_python/prueba.py

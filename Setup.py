@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 HERE = pathlib.Path(__file__).parent
 
 VERSION = '1.0.0' 
-PACKAGE_NAME = 'excel-python' 
+PACKAGE_NAME = 'estadistica-facil' 
 AUTHOR = 'Benjamín Peralta'
 AUTHOR_EMAIL = 'benjaminp158@gmail.com'
 URL = 'https://github.com/PeraBaja/excel-python'
