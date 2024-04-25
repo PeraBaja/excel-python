@@ -3,6 +3,15 @@ from Agrupacion import Agrupacion
 from Intervalo import Intervalo
 class Frecuencias:
     def __init__(self, agrupacion: Agrupacion, datos: tuple):
+        """_Crea tuplas de frecuencias a partir de una agrupacion de datos_
+
+        Args:
+            agrupacion (Agrupacion)
+            datos (tuple): _datos pertenecientes a la agrupación_
+
+        Raises:
+            TypeError: _description_
+        """
         if type(agrupacion) == Agrupacion:
             self.__agrupacion: Agrupacion = agrupacion
         else:
