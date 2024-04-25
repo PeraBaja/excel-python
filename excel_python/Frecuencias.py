@@ -2,9 +2,9 @@ from enum import Enum, auto
 from Agrupacion import Agrupacion
 from Intervalo import Intervalo
 class Frecuencias:
-    def __init__(self, agrupaciones: Agrupacion, datos: list):
-        if type(agrupaciones) == Agrupacion:
-            self.__agrupaciones: Agrupacion = agrupaciones
+    def __init__(self, agrupacion: Agrupacion, datos: tuple):
+        if type(agrupacion) == Agrupacion:
+            self.__agrupacion: Agrupacion = agrupacion
         else:
             print('Error. Debe pasarse como argumento un objeto de tipo agrupación')
             raise TypeError
@@ -20,7 +20,7 @@ class Frecuencias:
 
     def __calcular_absolutas(self) :
         absolutas = []
-        for intervalo in self.__agrupaciones:
+        for intervalo in self.__agrupacion:
             intervalo: Intervalo
             absolutas.append(
                 sum(1 for dato in self.__datos if intervalo.limiteInferior <= dato < intervalo.limiteSuperior)
