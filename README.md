@@ -1,6 +1,12 @@
 # Excel en Python
 
-_Una libreria para hacer mediciones estadisticas de datos_
+_Una libreria para hacer mediciones estadísticas basicas de datos_
+
+## Instalación
+_Instalar el proyecto_
+```
+pip install excel-python
+```
 
 ## Comenzando 🚀
 
