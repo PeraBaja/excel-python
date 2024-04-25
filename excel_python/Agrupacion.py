@@ -1,5 +1,5 @@
 import numpy as np
-from Intervalo import Intervalo
+from .Intervalo import Intervalo
 
 class Agrupacion:
     def __init__(self, datos: tuple, cantidadDeIntervalos: int, redondearAbajo: bool) -> None:

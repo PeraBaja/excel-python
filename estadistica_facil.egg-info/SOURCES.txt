@@ -13,4 +13,3 @@ excel_python/Intervalo.py
 excel_python/MedicionesAgrupacion.py
 excel_python/Muestra.py
 excel_python/__init__.py
-excel_python/prueba.py

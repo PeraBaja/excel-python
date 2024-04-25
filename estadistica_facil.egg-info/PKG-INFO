@@ -17,7 +17,7 @@ _Una libreria para hacer mediciones estadísticas basicas de datos_
 ## Instalación
 _Instalar el proyecto_
 ```
-pip install excel-python
+pip install estadistica-facil
 ```
 
 ## Comenzando 🚀

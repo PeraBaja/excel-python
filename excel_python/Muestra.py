@@ -1,4 +1,4 @@
-from IMedible import IMedible
+from .IMedible import IMedible
 
 
 class Muestra(IMedible):

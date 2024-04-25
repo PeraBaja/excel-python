@@ -1,6 +1,6 @@
 from enum import Enum, auto
-from Agrupacion import Agrupacion
-from Intervalo import Intervalo
+from .Agrupacion import Agrupacion
+from .Intervalo import Intervalo
 class Frecuencias:
     def __init__(self, agrupacion: Agrupacion, datos: tuple):
         """_Crea tuplas de frecuencias a partir de una agrupacion de datos_

@@ -1,6 +1,6 @@
-from Agrupacion import Agrupacion
-from Frecuencias import Frecuencias
-from IMedible import IMedible
+from .Agrupacion import Agrupacion
+from .Frecuencias import Frecuencias
+from .IMedible import IMedible
 
 class MedicionesAgrupacion(IMedible):
     def __init__(self, agrupacion: Agrupacion, frecuencias: Frecuencias, datos: tuple):
