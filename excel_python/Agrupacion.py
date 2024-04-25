@@ -2,7 +2,14 @@ import numpy as np
 from Intervalo import Intervalo
 
 class Agrupacion:
-    def __init__(self, datos, cantidadDeIntervalos, redondearAbajo) -> None:
+    def __init__(self, datos: tuple, cantidadDeIntervalos: int, redondearAbajo: bool) -> None:
+        """_Crea una tupla de intervalos_
+
+        Args:
+            datos (tuple) 
+            cantidadDeIntervalos (int): _La cantidad de divisiones que se harán a los datos_
+            redondearAbajo (bool): _Si al calcular el ancho de clase se redondea hacia abajo_
+        """
         self.__datos: tuple = datos
         self.__redondearAbajo = redondearAbajo
         self.__cantidadDeIntervalos = cantidadDeIntervalos
