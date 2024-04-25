@@ -13,7 +13,7 @@ class IMedible(ABC):
         pass
     
     @abstractmethod
-    def calcular_percentil():
+    def calcular_percentil(self, percentilDeseado):
         pass
     
     def calcular_cuartiles(self):
