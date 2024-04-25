@@ -22,3 +22,4 @@ for datos in (muestra, mediciones):
     print(f'Media: {datos.media()}, Mediana: {datos.mediana()}, Moda: {datos.moda()}')
     print(f'Cuartiles: {datos.calcular_cuartiles()}')
     print(f'Percentil: {datos.calcular_percentil(13)}')
+    print(f'Varianza: {datos.varianza()}')
