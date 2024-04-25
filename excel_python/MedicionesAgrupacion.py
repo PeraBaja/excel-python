@@ -4,18 +4,40 @@ from IMedible import IMedible
 
 class MedicionesAgrupacion(IMedible):
     def __init__(self, agrupacion: Agrupacion, frecuencias: Frecuencias, datos: tuple):
+        """_Clase que permite hacer mediciones estadísticas a partir de los datos agrupados_
+
+        Args:
+            agrupacion (Agrupacion)
+            frecuencias (Frecuencias): _Las frecuencias correspondientes a la agrupación_
+            datos (tuple): _Los datos correspondientes a la agrupación_
+        """
         self.__intervalos = agrupacion.intervalos
         self.__agrupacion = agrupacion
         self.__frecuencias = frecuencias
         self.__datos = datos
-    def media(self):
+    def media(self) -> float:
+        """_Devuelve el promedio de los datos agrupados_
+
+        Returns:
+            float
+        """
         resultado = [intervalo.marcaClase * Fi for intervalo, Fi in zip(self.__intervalos, self.__frecuencias.absolutas)]
         return round(sum(resultado) / len(self.__datos), 2)
 
-    def mediana(self):
+    def mediana(self) -> float:
+        """_Devuelve la mediana de los datos agrupados_
+
+        Returns:
+            float
+        """
         return self.calcular_percentil(50)[50]
     
-    def moda(self):
+    def moda(self) -> float:
+        """_Devuelve la moda de los datos agrupados_
+
+        Returns:
+            float
+        """
         Mo = 0
         fi = 0
         fiAnterior = 0
@@ -37,13 +59,14 @@ class MedicionesAgrupacion(IMedible):
         return round(Li + ((Mo - fiAnterior) / (fi - fiAnterior + fi - fiPosterior))* self.__agrupacion.anchoClase, 2)
         pass
     def calcular_percentil(self, percentilDeseado: float):
-        """_summary_
+        """_Devuelve el percentil a partir de un percentil porcentual (p/100) 
+            de los datos agrupados_
 
         Args:
-            percentilDeseado (_float_): _el porcentaje del percentil_
+            percentilDeseado (_float_): _El porcentaje del percentil_
 
         Returns:
-            _dict_: _retorna el percentil deseado_
+            _dict_: _Retorna la posicion del percentil como clave y como valor el percentil_
         """
         Me = sum(self.__frecuencias.absolutas) * (percentilDeseado / 100)
         FiAnterior = 0
@@ -60,7 +83,12 @@ class MedicionesAgrupacion(IMedible):
                 break #Si encontramos el inmediato mayor a n/2 entonces dejamos de buscar
         pecentil = round(Li + ((Me - FiAnterior) / fi)* self.__agrupacion.anchoClase, 2)    
         return {percentilDeseado: pecentil} 
-    def varianza(self):
+    def varianza(self) -> float:
+        """_Devuelve la varianza de los datos agrupados_
+
+        Returns:
+            float
+        """
         sumatoria = 0
         cantidadIntervalos = len(self.__intervalos)
         for i in range(cantidadIntervalos):
