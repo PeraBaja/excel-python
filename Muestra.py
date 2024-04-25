@@ -4,6 +4,7 @@ from IMedible import IMedible
 class Muestra(IMedible):
     def __init__(self, datos: list):
         self.__datos = datos
+        self.__media = self.media()
     def media(self):
         return round(sum(self.__datos) / len(self.__datos), 2)
 
@@ -51,5 +52,7 @@ class Muestra(IMedible):
             percentil = self.__datos[posicionPercentil - 1]
         return {posicionPercentil: percentil}
     def varianza(self):
-        pass
+        frecuenciasAbsolutas = self.__listar_apariciones() 
+        sumatoria = sum(((dato - self.__media) ** 2) * frecuenciasAbsolutas[dato] for dato in set(self.__datos))
+        return sumatoria / len(self.__datos) - 1
         
