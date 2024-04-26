@@ -1,4 +1,4 @@
-from .IMedible import IMedible
+from excel_python.IMedible import IMedible
 
 
 class Muestra(IMedible):

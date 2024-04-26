@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 
 HERE = pathlib.Path(__file__).parent
 
-VERSION = '1.0.0' 
+VERSION = '1.0.5' 
 PACKAGE_NAME = 'estadistica-facil' 
 AUTHOR = 'Benjamín Peralta'
 AUTHOR_EMAIL = 'benjaminp158@gmail.com'

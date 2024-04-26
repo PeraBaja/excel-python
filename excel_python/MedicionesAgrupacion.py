@@ -1,6 +1,6 @@
-from .Agrupacion import Agrupacion
-from .Frecuencias import Frecuencias
-from .IMedible import IMedible
+from excel_python.Agrupacion import Agrupacion
+from excel_python.Frecuencias import Frecuencias
+from excel_python.IMedible import IMedible
 
 class MedicionesAgrupacion(IMedible):
     def __init__(self, agrupacion: Agrupacion, frecuencias: Frecuencias, datos: tuple):
