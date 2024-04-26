@@ -1,6 +1,6 @@
 from enum import Enum, auto
-from excel_python.Agrupacion import Agrupacion
-from excel_python.Intervalo import Intervalo
+from estadistica_facil.Agrupacion import Agrupacion
+from estadistica_facil.Intervalo import Intervalo
 class Frecuencias:
     def __init__(self, agrupacion: Agrupacion, datos: tuple):
         """_Crea tuplas de frecuencias a partir de una agrupacion de datos_

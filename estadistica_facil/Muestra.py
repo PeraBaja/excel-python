@@ -1,4 +1,4 @@
-from excel_python.IMedible import IMedible
+from estadistica_facil.IMedible import IMedible
 
 
 class Muestra(IMedible):

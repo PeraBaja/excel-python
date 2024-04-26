@@ -1,5 +1,5 @@
 import numpy as np
-from excel_python.Intervalo import Intervalo
+from estadistica_facil.Intervalo import Intervalo
 
 class Agrupacion:
     def __init__(self, datos: tuple, cantidadDeIntervalos: int, redondearAbajo: bool) -> None:
