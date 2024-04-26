@@ -1,27 +1,16 @@
-[project]
-name = "estadistica-facil"
-
-version = "1.0.6"
-authors = [
-  { name="Benjamín Peralta", email="benjaminp158@gmail.com" },
-]
-
-dependencies = [
-  "numpy"
-]
-description = "Una libreria para hacer mediciones estadísticas básicas de datos"
-readme = "README.md"
-requires-python = ">=3.8"
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-]
-
-[project.urls]
-Homepage = "https://github.com/PeraBaja/excel-python"
-Issues = "https://github.com/pypa/sampleproject/issues"
-
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "estadistica_facil"
+authors = [{name = "Benjamín Peralta", email = "benjaminp158@gmail.com"}]
+readme = "README.md"
+license = {file = "LICENSE"}
+classifiers = ["License :: OSI Approved :: MIT License"]
+dynamic = ["version", "description"]
+dependencies = ["numpy>=1.26.4"]
+[project.urls]
+Home = "https://github.com/PeraBaja/excel-python"
+
+
