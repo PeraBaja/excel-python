@@ -29,10 +29,16 @@ class Frecuencias:
 
     def __calcular_absolutas(self) :
         absolutas = []
-        for intervalo in self.__agrupacion:
+        intervalos: tuple = self.__agrupacion.intervalos
+        for intervalo in intervalos:
             intervalo: Intervalo
-            absolutas.append(
-                sum(1 for dato in self.__datos if intervalo.limiteInferior <= dato < intervalo.limiteSuperior)
+            if intervalo == intervalos[-1]:  # Si es el último intervalo
+                absolutas.append(
+                    sum(1 for dato in self.__datos if intervalo.limiteInferior <= dato <= intervalo.limiteSuperior)
+                )
+            else:
+                absolutas.append(
+                    sum(1 for dato in self.__datos if intervalo.limiteInferior <= dato < intervalo.limiteSuperior)
                 )
         return tuple(absolutas)      
 
