@@ -1,5 +1,5 @@
 from enum import Enum, auto
-from estadistica_facil.Agrupacion import Agrupacion
+from estadistica_facil.agrupacion import calcular_anchoClase, agrupar
 from estadistica_facil.Intervalo import Intervalo
 class Frecuencias:
     def __init__(self, agrupacion: Agrupacion, datos: tuple):
