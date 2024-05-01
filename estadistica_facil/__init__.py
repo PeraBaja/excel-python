@@ -1,6 +1,6 @@
 """_Permite realizar operaciones estadisticas de manera sencilla_"""
-from estadistica_facil.agrupacion import calcular_anchoClase, agrupar
-from estadistica_facil.Frecuencias import Frecuencias
+from estadistica_facil.agrupacion import *
+from estadistica_facil.frecuencias import *
 from estadistica_facil.Intervalo import Intervalo
 from estadistica_facil.MedicionesAgrupacion import MedicionesAgrupacion
 from estadistica_facil.Muestra import Muestra
