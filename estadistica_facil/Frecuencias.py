@@ -4,7 +4,11 @@ from estadistica_facil.Intervalo import Intervalo
         
 
 def frecuencias_absolutas(datos: tuple, intervalos: tuple = None) :
+    datos = sorted(datos)
+    print(datos)
     absolutas = []
+    if not intervalos:
+        return __listar_apariciones(datos)
     for intervalo in intervalos:
         intervalo: Intervalo
         if intervalo == intervalos[-1]:  # Si es el último intervalo
@@ -16,7 +20,17 @@ def frecuencias_absolutas(datos: tuple, intervalos: tuple = None) :
                 sum(1 for dato in datos if intervalo.limiteInferior <= dato < intervalo.limiteSuperior)
             )
     return tuple(absolutas)      
-
+def __listar_apariciones(datos: tuple) -> tuple:
+        cantidadApariciones: dict = {}
+        
+        for dato in datos:
+            if not cantidadApariciones.__contains__(dato):
+                cantidadApariciones.update({dato: 1})
+            else:
+                cantidadApariciones[dato] += 1
+                
+        return [frecuencia for frecuencia in cantidadApariciones.values()]
+    
 def frecuencias_relativas(frecuencias_absolutas: tuple):
     relativas = []
     cantDatos = sum(frecuencias_absolutas)
