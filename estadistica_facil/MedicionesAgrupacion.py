@@ -99,5 +99,5 @@ def varianza(intervalos: tuple, datos: tuple, frecuencias_absolutas: tuple) -> f
     cantidadIntervalos = len(intervalos)
     for i in range(cantidadIntervalos):
         sumatoria += (pow(intervalos[i].marcaClase - X, 2)) * frecuencias_absolutas[i]
-    return sumatoria / len(datos) - 1 ##Error de calculo
+    return sumatoria / (len(datos) - 1)
     
