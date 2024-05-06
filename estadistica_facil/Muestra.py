@@ -57,7 +57,15 @@ def calcular_percentil(percentilDeseado: int, datos: tuple) -> dict:
     return {posicionPercentil: percentil}
 
     
-def calcular_cuartiles(datos):
+def calcular_cuartiles(datos: tuple):
+    """_Calcula los percentiles de la posición 25, 50 y 75_
+
+    Args:
+        datos (tuple)
+
+    Returns:
+        _dict_: _clave: percentil, valor: valor del percentil_
+    """
     cuartiles = {}
     for i in range(25, 100, 25):
         percentil = calcular_percentil(i, datos)

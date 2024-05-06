@@ -74,6 +74,20 @@ def calcular_percentil(percentilDeseado: float, intervalos: tuple, datos: tuple,
             break #Si encontramos el inmediato mayor a n/percentilDeseado entonces dejamos de buscar
     pecentil = round(Li + ((Me - FiAnterior) / fi)* ancho_clase, 2)    
     return {percentilDeseado: pecentil} 
+def calcular_cuartiles(intervalos: tuple, datos: tuple, frecuencias_absolutas: tuple, ancho_clase: float):
+    """_Calcula los percentiles de la posición 25, 50 y 75_
+
+    Args:
+        datos (tuple)
+
+    Returns:
+        _dict_: _clave: percentil, valor: valor del percentil_
+    """
+    cuartiles = {}
+    for i in range(25, 100, 25):
+        percentil = calcular_percentil(i, intervalos, datos, frecuencias_absolutas, ancho_clase)
+        cuartiles.update(percentil)
+    return cuartiles
 def varianza(intervalos: tuple, datos: tuple, frecuencias_absolutas: tuple) -> float:
     """_Devuelve la varianza de los datos agrupados_
 
