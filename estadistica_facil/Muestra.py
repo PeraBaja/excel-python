@@ -1,5 +1,3 @@
-from estadistica_facil.IMedible import IMedible
-
 
 
 def media(datos: list) -> float:
@@ -35,7 +33,7 @@ def moda(datos: tuple, frecuencias_absolutas: tuple) -> float:
     i = frecuencias_absolutas.index(frecuencia_maxima)
     return datos[i]
         
-def calcular_percentil(datos: tuple, percentilDeseado: int) -> dict:
+def calcular_percentil(percentilDeseado: int, datos: tuple) -> dict:
     """_Devuelve el percentil a partir de un percentil porcentual (p/100) 
         de los datos no agrupados_
 
@@ -57,6 +55,14 @@ def calcular_percentil(datos: tuple, percentilDeseado: int) -> dict:
         percentil = datos[posicionPercentil - 1]
         
     return {posicionPercentil: percentil}
+
+    
+def calcular_cuartiles(datos):
+    cuartiles = {}
+    for i in range(25, 100, 25):
+        percentil = calcular_percentil(i, datos)
+        cuartiles.update(percentil)
+    return cuartiles
 
 def varianza(datos: tuple, frecuencias_absolutas: tuple) -> float:
     """_Devuelve la varianza de los datos no agrupados_
