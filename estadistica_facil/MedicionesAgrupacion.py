@@ -1,6 +1,4 @@
-from estadistica_facil.agrupacion import calcular_anchoClase
 from estadistica_facil.frecuencias import frecuencias_acumuladas
-from estadistica_facil.IMedible import IMedible
 
 def media(intervalos: tuple, datos: tuple, frecuencias_absolutas: tuple) -> float:
     """_Devuelve el promedio de los datos agrupados_
