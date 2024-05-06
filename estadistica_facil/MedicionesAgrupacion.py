@@ -1,97 +1,91 @@
-from estadistica_facil.Agrupacion import Agrupacion
-from estadistica_facil.Frecuencias import Frecuencias
+from estadistica_facil.agrupacion import calcular_anchoClase
+from estadistica_facil.frecuencias import frecuencias_acumuladas
 from estadistica_facil.IMedible import IMedible
 
-class MedicionesAgrupacion(IMedible):
-    def __init__(self, agrupacion: Agrupacion, frecuencias: Frecuencias, datos: tuple):
-        """_Clase que permite hacer mediciones estadísticas a partir de los datos agrupados_
+def media(intervalos: tuple, datos: tuple, frecuencias_absolutas: tuple) -> float:
+    """_Devuelve el promedio de los datos agrupados_
 
-        Args:
-            agrupacion (Agrupacion)
-            frecuencias (Frecuencias): _Las frecuencias correspondientes a la agrupación_
-            datos (tuple): _Los datos correspondientes a la agrupación_
-        """
-        self.__intervalos = agrupacion.intervalos
-        self.__agrupacion = agrupacion
-        self.__frecuencias = frecuencias
-        self.__datos = datos
-    def media(self) -> float:
-        """_Devuelve el promedio de los datos agrupados_
+    Returns:
+        float
+    """
+    resultado = [intervalo.marcaClase * Fi for intervalo, Fi in zip(intervalos, frecuencias_absolutas)]
+    return round(sum(resultado) / len(datos), 2)
 
-        Returns:
-            float
-        """
-        resultado = [intervalo.marcaClase * Fi for intervalo, Fi in zip(self.__intervalos, self.__frecuencias.absolutas)]
-        return round(sum(resultado) / len(self.__datos), 2)
+def mediana() -> float:
+    """_Devuelve la mediana de los datos agrupados_
 
-    def mediana(self) -> float:
-        """_Devuelve la mediana de los datos agrupados_
+    Returns:
+        float
+    """
+    return calcular_percentil(50)[50]
 
-        Returns:
-            float
-        """
-        return self.calcular_percentil(50)[50]
+def moda(intervalos: tuple, datos: tuple, frecuencias_absolutas: tuple, ancho_clase) -> float:
+    """_Devuelve la moda de los datos agrupados_
+    Args:
+        intervalos (tuple): _description_
+        datos (tuple): _description_
+        frecuencias_absolutas (tuple): _description_
+        ancho_clase (_int_): _description_
+
+    Returns:
+        float: _moda_
+    """
+    Mo = 0
+    fi = 0
+    fiAnterior = 0
+    fiPosterior = 0
+    Li = 0
+    for i in range(len(frecuencias_absolutas)):
+        if frecuencias_absolutas[i] > Mo:
+            Mo = frecuencias_absolutas[i]
+            fi = frecuencias_absolutas[i]
+            Li = intervalos[i].limiteInferior
+            try:
+                fiAnterior = frecuencias_absolutas[i - 1]
+            except IndexError:
+                fiAnterior = 0
+            try:
+                fiPosterior = frecuencias_absolutas[i + 1]
+            except IndexError:
+                fiPosterior = 0
+    return round(Li + ((Mo - fiAnterior) / (fi - fiAnterior + fi - fiPosterior))* ancho_clase, 2)
+    pass
+def calcular_percentil(percentilDeseado: float, intervalos: tuple, datos: tuple, frecuencias_absolutas: tuple, ancho_clase: int):
+    """_Devuelve el percentil a partir de un percentil porcentual (p/100) 
+        de los datos agrupados_
+
+    Args:
+        percentilDeseado (_float_): _El porcentaje del percentil_
+
+    Returns:
+        _dict_: _Retorna el percentil porcentual como clave y como valor el percentil_
+    """
+    acumuladas = frecuencias_acumuladas(frecuencias_absolutas)
+    Me = sum(frecuencias_absolutas) * (percentilDeseado / 100)
+    FiAnterior = 0
+    fi = 0
+    Li = 0
+    for i in range(len(acumuladas)):
+        if acumuladas[i] > Me:
+            try:
+                FiAnterior = acumuladas[i - 1]
+            except IndexError:
+                FiAnterior = 0
+            fi = frecuencias_absolutas[i]
+            Li = intervalos[i].limiteInferior
+            break #Si encontramos el inmediato mayor a n/percentilDeseado entonces dejamos de buscar
+    pecentil = round(Li + ((Me - FiAnterior) / fi)* ancho_clase, 2)    
+    return {percentilDeseado: pecentil} 
+def varianza(intervalos: tuple, datos: tuple, frecuencias_absolutas: tuple) -> float:
+    """_Devuelve la varianza de los datos agrupados_
+
+    Returns:
+        float
+    """
+    X = media(intervalos, datos, frecuencias_absolutas)
+    sumatoria = 0
+    cantidadIntervalos = len(intervalos)
+    for i in range(cantidadIntervalos):
+        sumatoria += (pow(intervalos[i].marcaClase - X, 2)) * frecuencias_absolutas[i]
+    return sumatoria / len(datos) - 1 ##Error de calculo
     
-    def moda(self) -> float:
-        """_Devuelve la moda de los datos agrupados_
-
-        Returns:
-            float
-        """
-        Mo = 0
-        fi = 0
-        fiAnterior = 0
-        fiPosterior = 0
-        Li = 0
-        for i in range(len(self.__frecuencias.absolutas)):
-            if self.__frecuencias.absolutas[i] > Mo:
-                Mo = self.__frecuencias.absolutas[i]
-                fi = self.__frecuencias.absolutas[i]
-                Li = self.__intervalos[i].limiteInferior
-                try:
-                    fiAnterior = self.__frecuencias.absolutas[i - 1]
-                except IndexError:
-                    fiAnterior = 0
-                try:
-                    fiPosterior = self.__frecuencias.absolutas[i + 1]
-                except IndexError:
-                    fiPosterior = 0
-        return round(Li + ((Mo - fiAnterior) / (fi - fiAnterior + fi - fiPosterior))* self.__agrupacion.anchoClase, 2)
-        pass
-    def calcular_percentil(self, percentilDeseado: float):
-        """_Devuelve el percentil a partir de un percentil porcentual (p/100) 
-            de los datos agrupados_
-
-        Args:
-            percentilDeseado (_float_): _El porcentaje del percentil_
-
-        Returns:
-            _dict_: _Retorna el percentil porcentual como clave y como valor el percentil_
-        """
-        Me = sum(self.__frecuencias.absolutas) * (percentilDeseado / 100)
-        FiAnterior = 0
-        fi = 0
-        Li = 0
-        for i in range(len(self.__frecuencias.acumuladas)):
-            if self.__frecuencias.acumuladas[i] > Me:
-                try:
-                    FiAnterior = self.__frecuencias.acumuladas[i - 1]
-                except IndexError:
-                    FiAnterior = 0
-                fi = self.__frecuencias.absolutas[i]
-                Li = self.__intervalos[i].limiteInferior
-                break #Si encontramos el inmediato mayor a n/2 entonces dejamos de buscar
-        pecentil = round(Li + ((Me - FiAnterior) / fi)* self.__agrupacion.anchoClase, 2)    
-        return {percentilDeseado: pecentil} 
-    def varianza(self) -> float:
-        """_Devuelve la varianza de los datos agrupados_
-
-        Returns:
-            float
-        """
-        sumatoria = 0
-        cantidadIntervalos = len(self.__intervalos)
-        for i in range(cantidadIntervalos):
-            sumatoria += (pow(self.__intervalos[i].marcaClase - self.media(), 2)) * self.__frecuencias.absolutas[i]
-        return sumatoria / len(self.__datos) - 1
-        
