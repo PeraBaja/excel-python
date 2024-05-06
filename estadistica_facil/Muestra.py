@@ -68,5 +68,5 @@ def varianza(datos: tuple, frecuencias_absolutas: tuple) -> float:
     sumatoria = 0
     for dato, frecuencia in zip(datos, frecuencias_absolutas):
         sumatoria += ((dato - media_datos) ** 2) * frecuencia
-    return sumatoria / len(datos) - 1 ##ERROR de calculo
+    return sumatoria / (len(datos) - 1)
     
