@@ -1,19 +1,19 @@
 from abc import abstractmethod, ABC
 class IMedible(ABC):
     @abstractmethod
-    def media():
+    def media(self) -> float:
         pass
 
     @abstractmethod
-    def mediana():
+    def mediana(self) -> float:
         pass
     
     @abstractmethod
-    def moda():
+    def moda(self) -> float:
         pass
     
     @abstractmethod
-    def calcular_percentil(self, percentilDeseado):
+    def calcular_percentil(self, percentilDeseado) -> dict:
         pass
     
     def calcular_cuartiles(self):
@@ -24,5 +24,5 @@ class IMedible(ABC):
         return cuartiles
     
     @abstractmethod
-    def varianza():
+    def varianza(self) -> float:
         pass
