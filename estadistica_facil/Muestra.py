@@ -25,7 +25,7 @@ class Muestra(IMedible):
         Returns:
             float
         """
-        self.__datos.sort()
+        self.__datos = sorted(self.__datos)
         posicionMedio = (len(self.__datos) + 1) / 2
         if posicionMedio.is_integer():
             return self.__datos[int(posicionMedio)]
@@ -69,7 +69,7 @@ class Muestra(IMedible):
         Returns:
             _dict_: _Retorna la posicion del percentil como clave y como valor el percentil_
         """
-        self.__datos.sort()
+        self.__datos = sorted(self.__datos)
         
         posicionPercentil = (percentilDeseado / 100) * len(self.__datos)
             
