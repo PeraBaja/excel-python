@@ -47,5 +47,5 @@ moda = muestra.media()
 mediana = muestra.mediana()
 moda = muestra.moda()
 
-print(media, mediana, moda)  # Ouput: 4.71, 4.5, 3
+print(media, mediana, moda)  # Ouput: 4.71 5 2
 ```
