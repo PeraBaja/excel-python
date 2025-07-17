@@ -41,6 +41,7 @@ class Muestra(IMedible):
         """
         aparicionMasGrande = 0
         cantidadApariciones = self.__listar_apariciones()
+        moda = 0
         for dato in cantidadApariciones:
             if cantidadApariciones[dato] > aparicionMasGrande:
                 aparicionMasGrande = cantidadApariciones[dato]
